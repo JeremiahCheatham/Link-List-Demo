@@ -22,10 +22,10 @@ Get returns item at index. Remove, removes item at index. Errors are NULL and Bo
     char *get1 = l_get(list, 0);
     l_remove(list, 0);
 
-Print, prints the entire list. Free, frees the entire list. both return void.
+Print, prints the entire list. Free, frees the entire list. both return void. Free takes a reference to the list and nulls the pointer too.
 
     l_print(list);
-    l_free(list);
+    l_free(&list);
 
 ## Note heap memory
 This is all on the heap. All functions internally handle and take care of freeing there own memory. To free the list l_free will free all memory given to the list and it will also null the list pointer. However any string that is returned from the list from, l_pop, l_unshift, l_extract and l_get are all heap strings no longer in the list. You will need to capture them and free them yourself.
